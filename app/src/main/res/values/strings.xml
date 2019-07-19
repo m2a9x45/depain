@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Depain</string>
+    <string name="main_editText">Search Train Station</string>
+    <string name="main_searchButton">Go 🚄</string>
+</resources>
