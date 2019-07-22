@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val searchButton = findViewById<Button>(R.id.main_serachButton)
 
         main_recylerView.layoutManager = LinearLayoutManager(this)
-        main_recylerView.adapter = MainAdapter()
+//        main_recylerView.adapter = MainAdapter()
 
 
 
@@ -76,6 +77,15 @@ class MainActivity : AppCompatActivity() {
                 val body = response.body?.string()
                 println(body)
                 println("Responce got")
+
+                val gson = GsonBuilder().create()
+
+                val DepInfo = gson.fromJson(body, DepInfo::class.java)
+
+                runOnUiThread {
+                    main_recylerView.adapter = MainAdapter(DepInfo)
+                }
+
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -86,3 +96,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+class DepInfo(val departures: departures)
+
+class departures(val all: List<dep>)
+
+class dep(val platform : String, val aimed_departure_time : String, val destination_name : String, val operator_name : String)
+

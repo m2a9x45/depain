@@ -11,20 +11,25 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView_des"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" android:textSize="36sp"/>
+            android:layout_marginStart="8dp" android:textSize="36sp"
+            android:layout_marginEnd="32dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:text="Platform 5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_plat"
-            app:layout_constraintTop_toBottomOf="@+id/textView_des"
-            android:textSize="24sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"/>
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView_des" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"/>
     <TextView
             android:text="16:40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_time" android:layout_marginEnd="32dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent" android:textSize="42sp"/>
+            android:id="@+id/textView_time" android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="36sp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toTopOf="parent"/>
     <View
             android:id="@+id/divider2"
             android:layout_width="0dp"
@@ -32,6 +37,14 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintTop_toBottomOf="@+id/textView_plat"
             android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="By LNER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_opararor"
+            app:layout_constraintStart_toEndOf="@+id/textView_plat"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView_des" android:layout_marginTop="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

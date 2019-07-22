@@ -1,17 +1,20 @@
 package com.example.depain
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.train_row.view.*
 
-class MainAdapter: RecyclerView.Adapter<CustomVeiwHolder>(){
+class MainAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(){
+
 
     val testdata = listOf<String>("Aberdeen","Edinburgh","London","Glasgow","Dundee","Inverurie","Oxford","Aberdeen","Edinburgh","London","Glasgow","Dundee","Inverurie","Oxford")
 
     override fun getItemCount(): Int {
-        return testdata.size
+        return DepInfo.departures.all.count()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomVeiwHolder {
@@ -21,8 +24,27 @@ class MainAdapter: RecyclerView.Adapter<CustomVeiwHolder>(){
     }
 
     override fun onBindViewHolder(holder: CustomVeiwHolder, position: Int) {
-        val desTitle = testdata.get(position)
+//        val desTitle = testdata.get(position)
+
+        val desTitle = DepInfo.departures.all.get(position).destination_name
+        val platform = DepInfo.departures.all.get(position).platform
+        val aimedDepTime = DepInfo.departures.all.get(position).aimed_departure_time
+        val operator_name = DepInfo.departures.all.get(position).operator_name
+
         holder?.itemView?.textView_des?.text = desTitle
+        holder.itemView.textView_plat.text = "Platform: " + platform
+        holder.itemView.textView_time.text = aimedDepTime
+        holder.itemView.textView_opararor.text = "Run by: " +  operator_name
+
+        holder.itemView.setOnClickListener { view ->
+            val DesName = DepInfo.departures.all.get(position).destination_name
+
+            println("User tapped the item : " + DesName)
+
+        }
+
+
+
     }
 }
 
