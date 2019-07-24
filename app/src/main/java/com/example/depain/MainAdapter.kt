@@ -1,6 +1,7 @@
 package com.example.depain
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,13 @@ class MainAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(
             val DesName = DepInfo.departures.all.get(position).destination_name
 
             println("User tapped the item : " + DesName)
+
+
+            val intent = Intent(view.context, TrainDetailActivity::class.java)
+
+            intent.putExtra("actionbarTitle", desTitle)
+
+            view.context.startActivity(intent)
 
         }
 

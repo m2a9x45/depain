@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             if (searchText != ""){
                 hideKeyboard()
                 Toast.makeText(this,searchText, Toast.LENGTH_SHORT).show()
+                // This is where fetchJson should go
             }
         }
 
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        fetchJson()
+        fetchJson("KGX") // Pass into fetchJson searchText to get value from Edit text in testing hard code "KGX"
     }
 
 
@@ -59,12 +60,14 @@ class MainActivity : AppCompatActivity() {
         inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
     }
 
-    fun fetchJson(){
+    fun fetchJson(Station: String) {
 
         val appID = "3c4cbb0f"
         val API_KEY = "0d7a9acca38e2ae512ce880393512982"
 
-        val url = "https://transportapi.com/v3/uk/train/station/KGX/live.json?app_id=3c4cbb0f&app_key=0d7a9acca38e2ae512ce880393512982&darwin=false&train_status=passenger" // ToDo add real url
+
+        val url =
+            "https://transportapi.com/v3/uk/train/station/$Station/live.json?app_id=3c4cbb0f&app_key=0d7a9acca38e2ae512ce880393512982&darwin=false&train_status=passenger" // ToDo add real url
 
         val request = Request.Builder().url(url).build()
 
