@@ -5,12 +5,30 @@
                   android:layout_height="match_parent">
 
     <TextView
-            android:text="Hello"
+            android:text="Leaving at 7:30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toTopOf="parent" android:textSize="24sp"/>
+            android:id="@+id/textView_deptime"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="28dp"
+            app:layout_constraintTop_toTopOf="parent" android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView" android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.245"/>
+    <TextView
+            android:text="Run by LNER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_opname"
+            app:layout_constraintTop_toBottomOf="@+id/textView_deptime"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toEndOf="@+id/imageView"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.344"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            app:srcCompat="@mipmap/thameslink" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

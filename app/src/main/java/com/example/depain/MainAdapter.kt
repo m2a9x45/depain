@@ -46,6 +46,9 @@ class MainAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(
             val intent = Intent(view.context, TrainDetailActivity::class.java)
 
             intent.putExtra("actionbarTitle", desTitle)
+            intent.putExtra("aimedDepTime", aimedDepTime)
+            intent.putExtra("platform", platform)
+            intent.putExtra("operator_name", operator_name)
 
             view.context.startActivity(intent)
 
