@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
                 hideKeyboard()
                 Toast.makeText(this,searchText, Toast.LENGTH_SHORT).show()
                 // This is where fetchJson should go
+//                fetchJson(searchText)
+//                railmate
             }
         }
 
