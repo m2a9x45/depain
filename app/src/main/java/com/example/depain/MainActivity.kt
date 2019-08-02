@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
@@ -23,9 +21,17 @@ class MainActivity : AppCompatActivity() {
 
         val editText = findViewById<EditText>(R.id.main_editText)
         val searchButton = findViewById<Button>(R.id.main_serachButton)
+        val switch = findViewById<Switch>(R.id.main_switch)
+        var localhost = false
 
         main_recylerView.layoutManager = LinearLayoutManager(this)
 //        main_recylerView.adapter = MainAdapter()
+
+
+        switch.setOnCheckedChangeListener { compoundButton, b ->
+            println("Switch changed" + b)
+            localhost = b
+        }
 
 
 
@@ -34,9 +40,7 @@ class MainActivity : AppCompatActivity() {
             if (searchText != ""){
                 hideKeyboard()
                 Toast.makeText(this,searchText, Toast.LENGTH_SHORT).show()
-                // This is where fetchJson should go
-//                fetchJson(searchText)
-//                railmate
+                fetchJson(searchText, localhost)
             }
         }
 
@@ -53,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        fetchJson("KGX") // Pass into fetchJson searchText to get value from Edit text in testing hard code "KGX"
+//        fetchJson("KGX") // Pass into fetchJson searchText to get value from Edit text in testing hard code "KGX"
     }
 
 
@@ -62,22 +66,26 @@ class MainActivity : AppCompatActivity() {
         inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
     }
 
-    fun fetchJson(Station: String) {
+    fun fetchJson(Station: String, localhost: Boolean) {
 
-        val appID = "3c4cbb0f"
-        val API_KEY = "0d7a9acca38e2ae512ce880393512982"
+        var url = "http://10.0.2.2:3000/livedepatures/${Station}"
 
+        if (localhost == false) {
+            val appID = "3c4cbb0f"
+            val API_KEY = "0d7a9acca38e2ae512ce880393512982"
 
-        val url =
-            "https://transportapi.com/v3/uk/train/station/$Station/live.json?app_id=3c4cbb0f&app_key=0d7a9acca38e2ae512ce880393512982&darwin=false&train_status=passenger" // ToDo add real url
+            url = "https://transportapi.com/v3/uk/train/station/$Station/live.json?app_id=3c4cbb0f&app_key=0d7a9acca38e2ae512ce880393512982&darwin=false&train_status=passenger"
+        }
+
+        println(url)
 
         val request = Request.Builder().url(url).build()
 
-        var client = OkHttpClient()
+        val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {
 
 
-            // Geting back responamce json for depatures drom london kings cross
+            // Getting back res json for dep from london kings cross
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
                 println(body)
