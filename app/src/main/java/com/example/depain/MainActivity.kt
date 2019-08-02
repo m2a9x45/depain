@@ -71,10 +71,7 @@ class MainActivity : AppCompatActivity() {
         var url = "http://10.0.2.2:3000/livedepatures/${Station}"
 
         if (localhost == false) {
-            val appID = "3c4cbb0f"
-            val API_KEY = "0d7a9acca38e2ae512ce880393512982"
-
-            url = "https://transportapi.com/v3/uk/train/station/$Station/live.json?app_id=3c4cbb0f&app_key=0d7a9acca38e2ae512ce880393512982&darwin=false&train_status=passenger"
+            url = "http://de.prettyawful.net:3000/livedepatures/${Station}"
         }
 
         println(url)
