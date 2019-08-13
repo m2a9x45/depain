@@ -22,7 +22,13 @@ class MainActivity : AppCompatActivity() {
         val editText = findViewById<EditText>(R.id.main_editText)
         val searchButton = findViewById<Button>(R.id.main_serachButton)
         val switch = findViewById<Switch>(R.id.main_switch)
-        var localhost = false
+        var localhost = true
+
+
+        main_recylerView_search.layoutManager = LinearLayoutManager(this)
+        getAllStation()
+//        main_recylerView_search.adapter = MainAdapterSearch()
+
 
         main_recylerView.layoutManager = LinearLayoutManager(this)
 //        main_recylerView.adapter = MainAdapter()
@@ -65,6 +71,46 @@ class MainActivity : AppCompatActivity() {
         val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
     }
+
+    fun getAllStation(){
+
+        val url =  "http://10.0.2.2:3000/stations"
+
+        println(url)
+
+        val request = Request.Builder().url(url).build()
+
+        val client = OkHttpClient()
+        client.newCall(request).enqueue(object : Callback {
+
+            override fun onResponse(call: Call, response: Response) {
+                val body = response.body?.string()
+                println(body)
+                println("Responce got")
+
+                val gson = GsonBuilder().create()
+
+                val listOfStations = gson.fromJson(body, listOfStations::class.java)
+
+                runOnUiThread {
+                    main_recylerView_search.adapter = MainAdapterSearch(listOfStations)
+                }
+
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to excute http request")
+                println(e)
+            }
+
+        })
+
+    }
+
+    class listOfStations(val test: List<Name>)
+    class Name(val Station_Name: String, val CRS_Code: String)
+
+
 
     fun fetchJson(Station: String, localhost: Boolean) {
 
