@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
             mypreference.setlocalhost(localhost)
             println("THIS MIGHT WORK localhost " + localhost)
 
+            getAllStation(localhost)
+
         }
 
 //        searchButton.setOnClickListener{
@@ -139,10 +141,12 @@ class MainActivity : AppCompatActivity() {
 
     fun getAllStation(localhost: Boolean){
 
-        val url =  "http://10.0.2.2:3000/stations"
+        println("This is localhost value" + localhost)
+
+        var url =  "http://10.0.2.2:3000/stations"
 
         if (localhost == false){
-                var url = "http://vmi285311.contaboserver.net:3000/stations"
+                url = "http://vmi285311.contaboserver.net:3000/stations"
         }
 
 
