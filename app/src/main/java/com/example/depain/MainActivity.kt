@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
         searched_recylerView.layoutManager = LinearLayoutManager(this)
-        getAllStation()
+        getAllStation(localhost)
 //        main_recylerView_search.adapter = MainAdapterSearch()
 
 
@@ -137,9 +137,15 @@ class MainActivity : AppCompatActivity() {
 //        inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
 //    }
 
-    fun getAllStation(){
+    fun getAllStation(localhost: Boolean){
 
         val url =  "http://10.0.2.2:3000/stations"
+
+        if (localhost == false){
+                var url = "http://vmi285311.contaboserver.net:3000/stations"
+        }
+
+
 
         println(url)
 
