@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 hideKeyboard()
                 Toast.makeText(this,searchText, Toast.LENGTH_SHORT).show()
                 // This is where fetchJson should go
-//                fetchJson(searchText)
+                fetchJson(searchText)
 //                railmate
             }
         }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        fetchJson("KGX") // Pass into fetchJson searchText to get value from Edit text in testing hard code "KGX"
+        //fetchJson("KGX") // Pass into fetchJson searchText to get value from Edit text in testing hard code "KGX"
     }
 
 
