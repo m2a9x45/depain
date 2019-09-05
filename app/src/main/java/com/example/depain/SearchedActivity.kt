@@ -31,7 +31,7 @@ class SearchedActivity : AppCompatActivity() {
 
         val StationCode = intent.getStringExtra("StationCode")
         val StationName = intent.getStringExtra("StationName")
-        supportActionBar?.title = "Depatures from " + StationName
+        supportActionBar?.title = StationName + " Depatures"
 
         val mypreference = MyPreference(this)
         var usinglocalhost = mypreference.getLocalhost()
@@ -73,7 +73,7 @@ class SearchedActivity : AppCompatActivity() {
                 val DepInfo = gson.fromJson(body, DepInfo::class.java)
 
                 runOnUiThread {
-                    searched_recylerView.adapter = MainAdapter(DepInfo)
+                    searched_recylerView.adapter = SearchedAdapter(DepInfo)
                 }
 
             }
@@ -92,4 +92,6 @@ class DepInfo(val departures: departures)
 
 class departures(val all: List<dep>)
 
-class dep(val platform : String, val aimed_departure_time : String, val destination_name : String, val operator_name : String)
+class dep(val platform : String, val aimed_departure_time : String, val destination_name : String, val operator_name : String, val service_timetable :timetable)
+
+class timetable(val id: String)

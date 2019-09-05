@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.train_row.view.*
 
-class MainAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(){
+class SearchedAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(){
 
 
     val testdata = listOf<String>("Aberdeen","Edinburgh","London","Glasgow","Dundee","Inverurie","Oxford","Aberdeen","Edinburgh","London","Glasgow","Dundee","Inverurie","Oxford")
@@ -31,11 +31,12 @@ class MainAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(
         val platform = DepInfo.departures.all.get(position).platform
         val aimedDepTime = DepInfo.departures.all.get(position).aimed_departure_time
         val operator_name = DepInfo.departures.all.get(position).operator_name
+        val timetable = DepInfo.departures.all.get(position).service_timetable.id
 
         holder?.itemView?.textView_des?.text = desTitle
         holder.itemView.textView_plat.text = "Platform: " + platform
         holder.itemView.textView_time.text = aimedDepTime
-        holder.itemView.textView_opararor.text = "Run by: " +  operator_name
+        holder.itemView.textView_opararor.text = operator_name
 
         holder.itemView.setOnClickListener { view ->
             val DesName = DepInfo.departures.all.get(position).destination_name
@@ -49,6 +50,7 @@ class MainAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHolder>(
             intent.putExtra("aimedDepTime", aimedDepTime)
             intent.putExtra("platform", platform)
             intent.putExtra("operator_name", operator_name)
+            intent.putExtra("service_timetable", timetable)
 
             view.context.startActivity(intent)
 
