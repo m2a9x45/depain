@@ -35,7 +35,7 @@ class TrainDetailsAdaptor(val Timetable: Timetabledepartures) : RecyclerView.Ada
 
         holder?.itemView?.textView_stationName?.text = stationName
         holder?.itemView?.textView_platform?.text = "Platform " + platform
-        holder?.itemView?.textView_status?.text = status.toLowerCase()
+        holder?.itemView?.textView_status?.text = status
         holder?.itemView?.textView_arrivalTime?.text = aimedArrivaltime
 
     }
