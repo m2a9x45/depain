@@ -16,7 +16,8 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import android.util.Log
+import android.view.View
 
 
 class SearchedActivity : AppCompatActivity() {
@@ -35,18 +36,14 @@ class SearchedActivity : AppCompatActivity() {
 
         val mypreference = MyPreference(this)
         var usinglocalhost = mypreference.getLocalhost()
-        println("THIS MIGHT WORK localhost in the right place " + usinglocalhost)
-
 
         if (StationCode != null){
-            fetchJson(StationCode, usinglocalhost)
+                fetchJson(StationCode, usinglocalhost)
         }
-
-
     }
 
     // Station string is station code
-    fun fetchJson(Station: String, localhost: Boolean) {
+    private fun fetchJson(Station: String, localhost: Boolean) {
 
         var url = "http://10.0.2.2:3000/livedepatures/${Station}"
 
@@ -61,12 +58,11 @@ class SearchedActivity : AppCompatActivity() {
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {
 
-
-            // Getting back res json for dep from london kings cross
             override fun onResponse(call: Call, response: Response) {
+
                 val body = response.body?.string()
                 println(body)
-                println("Responce got")
+                println("body got")
 
                 val gson = GsonBuilder().create()
 
@@ -74,6 +70,9 @@ class SearchedActivity : AppCompatActivity() {
 
                 runOnUiThread {
                     searched_recylerView.adapter = SearchedAdapter(DepInfo)
+
+                    val loadingSpinner = findViewById<ProgressBar>(R.id.indeterminateBar)
+                    loadingSpinner.visibility = View.GONE
                 }
 
             }
@@ -92,6 +91,6 @@ class DepInfo(val departures: departures)
 
 class departures(val all: List<dep>)
 
-class dep(val platform : String, val aimed_departure_time : String, val destination_name : String, val operator_name : String, val service_timetable :timetable)
+class dep(val platform : String, val aimed_departure_time : String, val destination_name : String, val operator_name : String, val operator : String , val service_timetable :timetable)
 
 class timetable(val id: String)

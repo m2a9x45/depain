@@ -32,8 +32,10 @@ class SearchedAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHold
         val aimedDepTime = DepInfo.departures.all.get(position).aimed_departure_time
         val operator_name = DepInfo.departures.all.get(position).operator_name
         val timetable = DepInfo.departures.all.get(position).service_timetable.id
+        val operator = DepInfo.departures.all.get(position).operator
 
         holder?.itemView?.textView_des?.text = desTitle
+        if (platform == "null") {platform}
         holder.itemView.textView_plat.text = "Platform: " + platform
         holder.itemView.textView_time.text = aimedDepTime
         holder.itemView.textView_opararor.text = operator_name
@@ -51,6 +53,7 @@ class SearchedAdapter(val DepInfo: DepInfo): RecyclerView.Adapter<CustomVeiwHold
             intent.putExtra("platform", platform)
             intent.putExtra("operator_name", operator_name)
             intent.putExtra("service_timetable", timetable)
+            intent.putExtra("operator", operator)
 
             view.context.startActivity(intent)
 
