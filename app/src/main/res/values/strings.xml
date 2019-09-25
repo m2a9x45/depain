@@ -2,4 +2,8 @@
     <string name="app_name">Railmate</string>
     <string name="main_editText">Search Train Station</string>
     <string name="main_searchButton">Go 🚄</string>
+    <string name="link_mainText">
+        Linking your account allows you to add your own favourite stations along with receiving email notifications for certain train departures.
+
+    </string>
 </resources>

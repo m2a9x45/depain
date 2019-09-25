@@ -42,53 +42,6 @@ class TrainDetailActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.textView_deptime).text = "Leaving at " + aimedDepTime
         findViewById<TextView>(R.id.textView_opname).text = "run by " + operator_name
 
-//        logoImage.visibility = View.VISIBLE
-
-//        if (operator == "GS") {
-//            logoImage.setImageResource(R.drawable.caledoniansleeper)
-//        } else if (operator == "XC") {
-//            logoImage.setImageResource(R.drawable.crosscountry)
-//        }
-//        else if (operator == "XC") {
-//            logoImage.setImageResource(R.drawable.crosscountry)
-//        }
-//        else if (operator == "GW") {
-//            logoImage.setImageResource(R.drawable.gwr)
-//        }
-//        else if (operator == "Sn" || operator == "TL" ||  operator == "GX" || operator == "CC") {
-//            logoImage.setImageResource(R.drawable.thameslink)
-//        }
-//        else if (operator == "GN") {
-//            logoImage.setImageResource(R.drawable.greatnorthern)
-//        }
-//        else if (operator == "EM") {
-//            logoImage.setImageResource(R.drawable.eastmidlands)
-//        }
-//        else if (operator == "GR") {
-//            logoImage.setImageResource(R.drawable.lner)
-//        }
-//        else if (operator == "LO") {
-//            logoImage.setImageResource(R.drawable.londonoverground)
-//        }
-//        else if (operator == "SR") {
-//            logoImage.setImageResource(R.drawable.scotrail)
-//        }
-//        else if (operator == "XR") {
-////            logoImage.setImageResource(R.drawable.tflrail)
-//        }
-//        else if (operator == "TP") {
-//            logoImage.setImageResource(R.drawable.transpennineexpress)
-//        }
-//        else if (operator == "NT") {
-//            logoImage.setImageResource(R.drawable.northern)
-//        } else {
-//            logoImage.visibility = View.GONE
-//        }
-
-
-
-
-
         fetchJSON(timetable)
         fetchOperatorImgUrl(operator,usinglocalhost)
 

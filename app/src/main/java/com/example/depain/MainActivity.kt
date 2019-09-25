@@ -1,6 +1,7 @@
 package com.example.depain
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val editText = findViewById<EditText>(R.id.main_editText)
         val switch = findViewById<Switch>(R.id.main_switch)
+        val linkaccountbutton = findViewById<Button>(R.id.main_linkbutton)
 
 
         val mypreference = MyPreference(this)
@@ -47,6 +49,12 @@ class MainActivity : AppCompatActivity() {
 
             getAllStation(localhost)
 
+        }
+
+        linkaccountbutton.setOnClickListener {
+            println("Clicked")
+            val intent = Intent(this, LinkActivity::class.java)
+            this.startActivity(intent)
         }
 
         editText.addTextChangedListener(object : TextWatcher {
@@ -97,16 +105,8 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
-
-
-
-
-
-
             }
         })
-
-//        fetchJson("KGX") // Pass into fetchJson searchText to get value from Edit text in testing hard code "KGX"
     }
 
     fun getAllStation(localhost: Boolean){

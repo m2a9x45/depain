@@ -22,7 +22,7 @@ class TrainDetailsAdaptor(val Timetable: Timetabledepartures) : RecyclerView.Ada
 //        val desTitle = testdata.get(position)
 
         val stationName = Timetable.stops.get(position).station_name
-        val platform = Timetable.stops.get(position).platform
+        var platform = Timetable.stops.get(position).platform
         val status = Timetable.stops.get(position).status
         var aimedArrivaltime = Timetable.stops.get(position).aimed_arrival_time
 
@@ -37,8 +37,9 @@ class TrainDetailsAdaptor(val Timetable: Timetabledepartures) : RecyclerView.Ada
         }
 
         holder?.itemView?.textView_stationName?.text = stationName
+        if (platform == null) { platform = "TBA" }
         holder?.itemView?.textView_platform?.text = "Platform " + platform
-        holder?.itemView?.textView_status?.text = status
+        if (status != null){ holder?.itemView?.textView_status?.text = status.toLowerCase() }
         holder?.itemView?.textView_arrivalTime?.text = aimedArrivaltime
 
 
