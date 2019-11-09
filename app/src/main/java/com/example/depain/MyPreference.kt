@@ -18,7 +18,6 @@ class MyPreference (context: Context) {
         return preference.getBoolean(preference_usingLocalhost, true)
     }
 
-
     fun setloginCount(count:Int){
         val editor = preference.edit()
         editor.putInt(preference_login_count, count)
@@ -30,5 +29,4 @@ class MyPreference (context: Context) {
         editor.putBoolean(preference_usingLocalhost, usinglocalhost)
         editor.apply()
     }
-
 }

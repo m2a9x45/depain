@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
 import android.view.View
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 
 class SearchedActivity : AppCompatActivity() {
@@ -29,6 +30,7 @@ class SearchedActivity : AppCompatActivity() {
 
         searched_recylerView.layoutManager = LinearLayoutManager(this)
 
+        val mySwipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swiperefresh)
 
         val StationCode = intent.getStringExtra("StationCode")
         val StationName = intent.getStringExtra("StationName")
@@ -38,20 +40,28 @@ class SearchedActivity : AppCompatActivity() {
         var usinglocalhost = mypreference.getLocalhost()
 
         if (StationCode != null){
-                fetchJson(StationCode, usinglocalhost)
+                fetchJson(StationCode, usinglocalhost, mySwipeRefreshLayout)
+        }
+
+        fun myUpdateOperation() {
+            fetchJson(StationCode, usinglocalhost, mySwipeRefreshLayout)
+
+        }
+
+        mySwipeRefreshLayout.setOnRefreshListener {
+            println("onRefresh called from SwipeRefreshLayout")
+
+            // This method performs the actual data-refresh operation.
+            // The method calls setRefreshing(false) when it's finished.
+            myUpdateOperation()
+
         }
     }
 
     // Station string is station code
-    private fun fetchJson(Station: String, localhost: Boolean) {
+    private fun fetchJson(Station: String, localhost: Boolean, mySwipeRefreshLayout: SwipeRefreshLayout) {
 
-        var url = "http://10.0.2.2:3000/livedepatures/${Station}"
-
-        if (localhost == false) {
-            url = "http://de.prettyawful.net:3000/livedepatures/${Station}"
-        }
-
-        println(url)
+        var url = "http://railmate.net:3000/app/livedepatures/${Station}"
 
         val request = Request.Builder().url(url).build()
 
@@ -73,6 +83,7 @@ class SearchedActivity : AppCompatActivity() {
 
                     val loadingSpinner = findViewById<ProgressBar>(R.id.indeterminateBar)
                     loadingSpinner.visibility = View.GONE
+                    mySwipeRefreshLayout.isRefreshing = false
                 }
 
             }

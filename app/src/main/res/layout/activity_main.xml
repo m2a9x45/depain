@@ -14,8 +14,10 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
             android:hint="@string/main_editText"
             android:inputType="textPersonName"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,20 +41,10 @@
             android:layout_marginTop="8dp"
             android:checked="true"
             android:text="Is localhost"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_editText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/searched_recylerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_errorText"
-            tools:visibility="visible" />
 
     <TextView
             android:id="@+id/main_errorText"
@@ -93,4 +85,16 @@
             app:layout_constraintStart_toEndOf="@+id/main_switch"
             app:layout_constraintTop_toBottomOf="@+id/main_editText"
             app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searched_recylerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_errorText"
+            tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
