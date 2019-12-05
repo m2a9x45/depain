@@ -36,7 +36,7 @@ class LinkActivity : AppCompatActivity(){
 
         val JSON = "application/json; charset=utf-8".toMediaType()
 
-        val url = "http://10.0.2.2:3001/interest"
+        val url = "http://10.0.2.2:3060/interest"
 
         val MEDIA_TYPE_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaTypeOrNull()
 

@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getAllStation(){
 
-        var url = "http://railmate.net:3000/app/stations"
+        var url = "http://railmate.net:3060/app/stations"
 
         val request = Request.Builder().url(url).build()
 

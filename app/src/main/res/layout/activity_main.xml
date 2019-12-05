@@ -95,6 +95,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_errorText"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

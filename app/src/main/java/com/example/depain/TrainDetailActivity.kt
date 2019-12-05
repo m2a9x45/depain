@@ -43,7 +43,7 @@ class TrainDetailActivity : AppCompatActivity() {
 
     fun fetchOperatorImgUrl(operator: String){
 
-        var url = "http://railmate.net:3000/app/operator/${operator}/false"
+        var url = "http://railmate.net:3060/app/operator/${operator}/false"
 
         val request = Request.Builder().url(url).build()
 

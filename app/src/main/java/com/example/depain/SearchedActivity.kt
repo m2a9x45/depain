@@ -61,7 +61,7 @@ class SearchedActivity : AppCompatActivity() {
     // Station string is station code
     private fun fetchJson(Station: String, localhost: Boolean, mySwipeRefreshLayout: SwipeRefreshLayout) {
 
-        var url = "http://railmate.net:3000/app/livedepatures/${Station}"
+        var url = "http://railmate.net:3060/app/livedepatures/${Station}"
 
         val request = Request.Builder().url(url).build()
 

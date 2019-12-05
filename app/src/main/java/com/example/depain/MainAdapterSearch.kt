@@ -10,6 +10,7 @@ class MainAdapterSearch(val allStations: MainActivity.listOfStations): RecyclerV
 
     override fun getItemCount(): Int {
         return allStations.test.count()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomVeiwHolder {
@@ -19,6 +20,7 @@ class MainAdapterSearch(val allStations: MainActivity.listOfStations): RecyclerV
     }
 
     override fun onBindViewHolder(holder: CustomVeiwHolder, position: Int) {
+
 
         val stationName = allStations.test[position].Station_Name
         val stationCode = allStations.test[position].CRS_Code
